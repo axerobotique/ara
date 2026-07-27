@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurateur de devis — Axe Robotique & Automatisme</title>
+<meta name="description" content="Configurez votre cellule de palettisation : sélectionnez les éléments et quantités souhaités et recevez votre demande de devis.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="Logo Axe Robotique & Automatisme">
+      <span class="brand-text">AXE ROBOTIQUE<small>&amp; AUTOMATISME</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Configurateur</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div class="container">
+    <h1>Configurateur de devis</h1>
+    <p>Parcourez les catégories ci-dessous, indiquez la quantité souhaitée pour chaque élément, puis complétez vos coordonnées. Votre demande nous sera envoyée par e-mail avec le détail de votre sélection.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="devis-layout">
+
+      <div id="catalogue-container">
+        <!-- Le catalogue est genere automatiquement par js/devis.js a partir de js/catalogue-data.js -->
+        <p style="color:#999">Chargement du catalogue…</p>
+      </div>
+
+      <aside class="cart">
+        <h3>Votre sélection</h3>
+        <p class="cart-sub">Ajoutez des quantités dans le catalogue pour construire votre demande.</p>
+
+        <ul class="cart-list" id="cart-list"></ul>
+
+        <div class="cart-total">
+          <span>Total estimé HT</span>
+          <span id="cart-total-value">0 €</span>
+        </div>
+        <p id="cart-total-note" style="color:#888; font-size:12px; margin:6px 0 20px;">Estimation indicative hors taxes.</p>
+
+        <form id="devis-form" novalidate>
+          <div class="form-field required">
+            <label for="nom">Nom et prénom</label>
+            <input type="text" id="nom" name="nom" required>
+          </div>
+          <div class="form-field">
+            <label for="societe">Société</label>
+            <input type="text" id="societe" name="societe">
+          </div>
+          <div class="form-field required">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone">
+          </div>
+          <div class="form-field">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Précisions sur votre projet, contraintes, délais..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; text-align:center;">Envoyer ma demande de devis</button>
+
+          <div id="form-msg" class="form-msg"></div>
+        </form>
+
+        <div id="fallback-box" class="fallback-box" style="display:none;">
+          <p style="font-size:12.5px;color:#777;margin:0 0 6px;">Récapitulatif à envoyer manuellement si votre client mail ne s'est pas ouvert :</p>
+          <textarea id="fallback-text" readonly></textarea>
+          <div class="fallback-actions">
+            <button type="button" id="copy-fallback" class="btn btn-dark">Copier le texte</button>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="">
+          <strong style="color:#fff">Axe Robotique &amp; Automatisme</strong>
+        </div>
+        <p>Spécialisé dans le bureau d'étude automatisme, la réalisation robotique et cobotique. Basé à Montagnat (01), entre Lyon et Genève.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Configurateur</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33437629955">04 37 62 99 55</a></li>
+          <li><a href="mailto:ries.thomas@axerobotique.com">ries.thomas@axerobotique.com</a></li>
+          <li>110 chemin des Arcuires, 01250 Montagnat</li>
+          <li><a href="https://www.linkedin.com/company/axe-robotique/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Axe Robotique &amp; Automatisme — Tous droits réservés.</span>
+      <span>SAS Axe Robotique &amp; Automatisme — 110 chemin des Arcuires, 01250 Montagnat</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/catalogue-data.js"></script>
+<script src="js/devis.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+// Menu mobile (commun a toutes les pages)
+document.addEventListener("DOMContentLoaded", function () {
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.querySelector("nav.main-nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      nav.classList.toggle("open");
+    });
+  }
+});
