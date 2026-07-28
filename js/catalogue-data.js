@@ -400,6 +400,239 @@ const CATALOGUE_FALLBACK = [
         unit: "piece"
       }
     ]
+  },
+  {
+    id: "bloc-base",
+    title: "BLOC Base (modules robotiques mobiles)",
+    items: [
+      {
+        id: "bloc-base-s",
+        name: "BLOC Base version S",
+        desc: "Module de base avec emplacement compatible robot au choix, systeme d'automatisme pour la flexibilite, detection automatique du poste de travail, armoire electrique de pilotage, interconnexion multipoint, 1 systeme de bridage, emplacement baie robot. Dossier technique, montage, cablage, programmation et livraison inclus (kit pour deux postes a distribuer).",
+        price: 4500,
+        unit: "module"
+      },
+      {
+        id: "bloc-base-m",
+        name: "BLOC Base version M",
+        desc: "Idem version S, gabarit intermediaire adapte a un robot ou une application de taille moyenne.",
+        price: 6000,
+        unit: "module"
+      },
+      {
+        id: "bloc-base-l",
+        name: "BLOC Base version L",
+        desc: "Idem version S, gabarit large adapte a un robot ou une application de plus grande taille.",
+        price: 8700,
+        unit: "module"
+      }
+    ]
+  },
+  {
+    id: "bloc-modules",
+    title: "BLOC Modules (a ajouter a un BLOC Base)",
+    items: [
+      {
+        id: "bloc-plate",
+        name: "BLOC Plate - plateau tournant multipositions",
+        desc: "Module equipe d'un plateau tournant (4 a 12 positions) pour le positionnement des pieces a traiter : station d'accueil mecanique, systeme de referencement, electro-aimant de bridage. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 16000,
+        unit: "module"
+      },
+      {
+        id: "bloc-plate-specifique",
+        name: "KIT Specifique Plate - etude des posages",
+        desc: "Etude et fourniture specifique des posages/accessoires du module BLOC Plate en fonction du besoin client. Dossier technique, etude, montage, cablage, programmation et livraison inclus.",
+        price: null,
+        unit: "prestation"
+      },
+      {
+        id: "bloc-2dvision",
+        name: "BLOC 2DVision - devracage 2D sur convoyeur",
+        desc: "Chargement d'une piece client par devracage 2D sur convoyeur : tremie de distribution + camera de vision 2D transmettant les points de prise au robot du BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 29000,
+        unit: "module"
+      },
+      {
+        id: "bloc-3dvision",
+        name: "BLOC 3DVision - devracage 3D en vrac",
+        desc: "Chargement d'une piece client par devracage 3D : camera de vision 3D + emplacement pour le contenant des pieces, transmettant les points de prise au robot du BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 57000,
+        unit: "module"
+      },
+      {
+        id: "bloc-accuplate",
+        name: "BLOC AccuPlate - chargement ou dechargement",
+        desc: "Module de convoyage de plateaux avec 1 systeme d'accumulation (convoyeur de 2 m + 1 ascenseur a plateau) pour une autonomie accrue. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 21000,
+        unit: "module"
+      },
+      {
+        id: "bloc-accuplate-mixte",
+        name: "BLOC AccuPlate Mixte - chargement et dechargement",
+        desc: "Module de convoyage de plateaux avec 2 systemes d'accumulation (convoyeur de 3 m + 2 ascenseurs a plateau) : les pieces sont presentees au robot puis rerangees. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 33000,
+        unit: "module"
+      },
+      {
+        id: "bloc-flexibowl",
+        name: "BLOC FlexiBowl - devracage 2D sur bol rotatif",
+        desc: "Bol rotatif + tremie vibrante + camera de vision 2D transmettant les points de prise au robot du BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 39500,
+        unit: "module"
+      },
+      {
+        id: "bloc-asyril",
+        name: "BLOC Asyril - devracage 2D flexible (pieces <= 40 mm)",
+        desc: "Systeme Asyril (pieces jusqu'a 40 mm) + tremie vibrante + camera de vision 2D transmettant les points de prise au robot du BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 39000,
+        unit: "module"
+      },
+      {
+        id: "bloc-conveyor",
+        name: "BLOC Conveyor - convoyeur d'arrivee (2 m)",
+        desc: "Convoyeur de 2 m integre sur un module, permettant l'acheminement des pieces deposees par le systeme client jusqu'au BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: 7900,
+        unit: "module"
+      },
+      {
+        id: "bloc-specifique",
+        name: "BLOC Specifique - application sur mesure",
+        desc: "Module adapte a une application specifique client (gravure, assemblage, controle d'aspect par vision, depose d'etiquette...). Dossier technique, montage, cablage, programmation et livraison inclus. A ajouter a un BLOC Base S, M ou L.",
+        price: null,
+        unit: "module"
+      }
+    ]
+  },
+  {
+    id: "kits-bloc-base",
+    title: "KITS pour BLOC Base",
+    items: [
+      {
+        id: "bloc-kit-box",
+        name: "KIT Box - posage carton (2 emplacements)",
+        desc: "Deux emplacements sur le module de base pour la mise en place de deux cartons vides ou autres contenants. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 1800,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-support",
+        name: "KIT Support - posage pieces",
+        desc: "Dispositif de posage concu pour les pieces du client, integre directement au module BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 1600,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-conveyor",
+        name: "KIT Conveyor - convoyeur sur BLOC Base (2 m)",
+        desc: "Convoyeur de 2 m integre sur le module BLOC Base, permettant aux pieces d'etre deposees par le systeme client ou par le robot. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 7900,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-lock",
+        name: "KIT Lock - bridage mecanique (1 poste)",
+        desc: "Systeme mecanique avec station d'accueil, referencement et electro-aimant de bridage a installer sur le module de base, avec prise de communication. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 2400,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-dock",
+        name: "KIT Dock - referencement devant poste",
+        desc: "Systeme mecanique de referencement a installer sur la machine du client, avec prise de communication. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 1750,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-visioncal",
+        name: "KIT VisionCal - recalage automatique des trajectoires",
+        desc: "Camera de vision + TAG de precision pour deux postes de travail : recalage automatique des reperes et trajectoires du robot au demarrage. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 8000,
+        unit: "piece"
+      }
+    ]
+  },
+  {
+    id: "kits-prehenseur-bloc",
+    title: "KITS Prehenseur (BLOC Base)",
+    items: [
+      {
+        id: "bloc-kit-aspi-mousse",
+        name: "KIT Aspi Mousse - aspiration par mousse",
+        desc: "Prehenseur d'aspiration par mousse pour cartons fermes. Dossier technique, montage et cablage inclus.",
+        price: 4000,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-aspi-ventouse",
+        name: "KIT Aspi Ventouse - aspiration par ventouse",
+        desc: "Prehenseur d'aspiration par ventouse pour cartons fermes. Dossier technique, montage et cablage inclus.",
+        price: 3500,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-pincepneu",
+        name: "KIT PincePneu - pince pneumatique double",
+        desc: "Prehenseur avec systeme de double pince pour la prise de 2 cartons ouverts. Dossier technique, montage et cablage inclus.",
+        price: 2500,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-pince",
+        name: "KIT Pince - pince electrique deux mors",
+        desc: "Prehenseur a pince electrique deux mors. Dossier technique, montage, cablage et essai inclus.",
+        price: 3400,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-changetool",
+        name: "KIT ChangeTool - changeur d'outil automatique",
+        desc: "Changeur d'outil automatique sur le robot, compatible avec deux prehenseurs de votre choix (avec leur support), systeme mecanique de posage sur BLOC Base. Dossier technique, montage, cablage et essai inclus.",
+        price: 7100,
+        unit: "piece"
+      }
+    ]
+  },
+  {
+    id: "kits-securite-bloc",
+    title: "KITS Securite (BLOC Base)",
+    items: [
+      {
+        id: "bloc-kit-laserbloc",
+        name: "KIT LaserBloc - radar de securite (module)",
+        desc: "Radar de securite integre dans un module BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 4500,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-2laserbloc",
+        name: "KIT 2LaserBloc - 2 radars de securite (module)",
+        desc: "Deux radars de securite integres dans un module BLOC Base. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 7500,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-lasermate",
+        name: "KIT LaserMate - radar de securite (poste de travail)",
+        desc: "Radar de securite integre sur le poste de travail du client, a associer au KIT Lock. Dossier technique, montage, cablage, programmation et livraison inclus.",
+        price: 4000,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-securebloc-m",
+        name: "KIT Secure Bloc M - carterisation",
+        desc: "Mise en securite d'un module mobile par carterisation en profile (assemblage, decoupe, element en mouvement...) : mecanique de carterisation + gache de porte. Dossier technique, montage, cablage et essai inclus.",
+        price: 2500,
+        unit: "piece"
+      },
+      {
+        id: "bloc-kit-barrierbloc",
+        name: "KIT Barrier Bloc - carterisation + barriere immaterielle",
+        desc: "Securisation d'un module mobile par carterisation en profile et barriere immaterielle qui se rearme automatiquement lors du depot d'une piece. Dossier technique, montage, cablage et essai inclus.",
+        price: 7900,
+        unit: "piece"
+      }
+    ]
   }
 ];
 
