@@ -54,6 +54,11 @@ function rendreCatalogue() {
   const container = document.getElementById("catalogue-container");
   if (!container) return;
 
+  if (!CATALOGUE || CATALOGUE.length === 0) {
+    container.innerHTML = `<p style="color:#c00">Le catalogue n'a pas pu etre charge. Merci de reessayer plus tard ou de nous contacter directement.</p>`;
+    return;
+  }
+
   let html = "";
   CATALOGUE.forEach((cat, idx) => {
     const nbSelectionnes = cat.items.filter((i) => (cart[i.id] || 0) > 0).length;
@@ -304,8 +309,14 @@ function initFormulaire() {
 
 document.addEventListener("DOMContentLoaded", function () {
   chargerPanier();
-  rendreCatalogue();
   initEcouteursCatalogue();
-  rendrePanier();
   initFormulaire();
+
+  const catalogueContainer = document.getElementById("catalogue-container");
+  if (catalogueContainer) {
+    Promise.resolve(window.catalogueReady).then(function () {
+      rendreCatalogue();
+      rendrePanier();
+    });
+  }
 });

@@ -1,23 +1,23 @@
 /*
  * ============================================================================
- * CATALOGUE PRODUITS - Axe Robotique & Automatisme
+ * CATALOGUE DE SECOURS - Axe Robotique & Automatisme
  * ============================================================================
- * Ce fichier contient TOUT le catalogue affiche sur la page devis.
- * Pour AJOUTER, MODIFIER ou SUPPRIMER un element, il suffit de modifier ce
- * fichier (pas besoin de toucher au reste du site).
+ * Le catalogue affiche normalement est charge depuis un Google Sheet par
+ * js/catalogue-loader.js (voir ce fichier pour la configuration).
  *
- * Pour ajouter un nouvel article, copiez un bloc { ... } et adaptez :
+ * CE fichier ne sert QUE de secours : il est utilise automatiquement si le
+ * Sheet n'est pas configure ou momentanement inaccessible. Vous pouvez tout
+ * de meme le maintenir a jour manuellement pour garder un filet de securite,
+ * en suivant la meme structure :
  *   - id       : identifiant unique (pas d'espace, pas d'accents)
  *   - name     : nom affiche
  *   - desc     : courte description (optionnelle, peut etre vide "")
  *   - price    : prix HT en euros (nombre). Mettre null si "Sur devis".
  *   - unit     : unite affichee (ex: "cellule", "piece", "prestation")
- *
- * Pour ajouter une CATEGORIE, copiez un bloc de categorie complet.
  * ============================================================================
  */
 
-const CATALOGUE = [
+const CATALOGUE_FALLBACK = [
   {
     id: "cellules",
     title: "Cellules de palettisation completes",
@@ -404,4 +404,4 @@ const CATALOGUE = [
 ];
 
 // Ne pas modifier la ligne suivante : elle rend le catalogue disponible aux autres scripts.
-if (typeof module !== "undefined") { module.exports = CATALOGUE; }
+if (typeof module !== "undefined") { module.exports = CATALOGUE_FALLBACK; }

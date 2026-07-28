@@ -1,0 +1,48 @@
+categorie_id,categorie_titre,item_id,item_nom,item_desc,prix,unite
+cellules,Cellules de palettisation completes,pal-12kg,Palettiseur robotise 12 Kg,"Robot 6 axes 2050 mm, cadence 20 cartons/min, chassis, pilotage intuitif, prehenseur aspiration, securite grille & scanner, installation incluse (200 km).",67000,cellule
+cellules,Cellules de palettisation completes,pal-25kg,Palettiseur robotise 25 Kg,"Robot 6 axes 2295 mm, cadence 20 cartons/min, chassis, pilotage intuitif, prehenseur aspiration, securite grille & scanner, installation incluse (200 km).",72900,cellule
+cellules,Cellules de palettisation completes,pal-cobot-20kg,Palettiseur robotise Cobotique No-Code 20 Kg,"Cobot 6 axes 2150 mm, cadence 10 cartons/min, chassis, pilotage intuitif, prehenseur aspiration, certifie CE, installation incluse (200 km).",84900,cellule
+cellules,Cellules de palettisation completes,pal-cobot-12kg-nu,Version Cobot No-Code 12 Kg (cellule seule),"Robot 6 axes 2050 mm - 12 Kg, cadence 10 cartons/min. Dossier technique, montage, cablage, livraison, mise en service inclus.",,cellule
+cellules,Cellules de palettisation completes,pal-cobot-30kg-nu,Version Cobot No-Code 30 Kg (cellule seule),"Robot 6 axes 2050 mm - 30 Kg, cadence 10 cartons/min. Dossier technique, montage, cablage, livraison, mise en service inclus.",,cellule
+prehenseurs,Prehenseurs,prehenseur-mousse,Prehenseur - Version Mousse,"Prehenseur d'aspiration par mousse, pour cartons fermes. Dossier technique, preparation, montage et cablage inclus.",4000,piece
+prehenseurs,Prehenseurs,prehenseur-pince,Prehenseur - Version Pince,"Systeme de double pince pour la prise de 2 cartons ouverts. Dossier technique, preparation, montage et cablage inclus.",5500,piece
+chassis,Chassis,chassis-standard,Chassis avec colonne fixe - Standard,"Chassis a fixer au sol, 2 emplacements palettes, colonne fixe centrale, passage de cables integre, emplacement armoire(s).",5000,piece
+chassis,Chassis,chassis-inox,Chassis avec colonne fixe - Version INOX agroalimentaire,"Meme conception que la version standard, en inox pour environnement agroalimentaire.",7000,piece
+chassis,Chassis,chassis-telescopique-100kg,Chassis avec colonne telescopique - 100 Kg,"Colonne telescopique a moteur brushless installee sur le chassis, charge 100 Kg.",9500,piece
+chassis,Chassis,chassis-motorise-200kg,Chassis avec colonne motorisee - 200 Kg,"Robot sur bras deporte + axe lineaire motorise (courroie crantee) reprenant l'effort de charge, 200 Kg.",15500,piece
+chassis,Chassis,chassis-simple-ur10,"Chassis simple pour palettisation (UR10, LIFKIT, baie robot, 2 palettes)","Chassis monte en atelier, emplacements pour UR10, LIFKIT, baie robot et 2 palettes.",4800,piece
+chassis,Chassis,chassis-mobile-station,Chassis mobile avec station d'accueil,"Chassis mobile monte en atelier avec station d'accueil pour palettisation (UR10, LIFKIT, baie robot, 2 palettes).",6000,piece
+chassis,Chassis,station-accueil-sup,Station d'accueil supplementaire (pour chassis mobile),"Ajout d'un poste au chassis mobile, raccordement electrique et pneumatique manuel.",1800,piece
+convoyeurs,Convoyeurs,convoyeur-simple,Module convoyeur d'arrivee des produits - simple voie,Convoyeur a rouleaux pour acheminer les cartons jusqu'au robot + coffret electrique de pilotage.,9500,piece
+convoyeurs,Convoyeurs,convoyeur-kit-alignement-s,Kit alignement carton (convoyeur simple),Aligne le carton sur un cote pour le referencement par le robot.,3000,option
+convoyeurs,Convoyeurs,convoyeur-kit-hauteur-s,Kit mesure de hauteur des cartons (convoyeur simple),Mesure la hauteur des cartons en transit.,2000,option
+convoyeurs,Convoyeurs,convoyeur-kit-codebarre-s,Kit lecture codes-barres (convoyeur simple),Lecture des codes-barres des cartons en transit.,4000,option
+convoyeurs,Convoyeurs,convoyeur-kit-intercalaire-s,Kit support intercalaires (convoyeur simple),Support pour intercalaires au-dessus du convoyeur.,3000,option
+convoyeurs,Convoyeurs,convoyeur-double,Module convoyeur d'arrivee des produits - double voie,Convoyeur a rouleaux divise en 2 voies independantes pour augmenter la cadence + coffret electrique de pilotage.,13500,piece
+convoyeurs,Convoyeurs,convoyeur-kit-hauteur-d,Kit mesure de hauteur des cartons (convoyeur double),Mesure la hauteur des cartons en transit.,3500,option
+convoyeurs,Convoyeurs,convoyeur-kit-alignement-d,Kit alignement carton (convoyeur double),Aligne le carton sur un cote pour le referencement par le robot.,,option
+convoyeurs,Convoyeurs,convoyeur-kit-codebarre-d,Kit lecture codes-barres (convoyeur double),Lecture des codes-barres des cartons en transit.,,option
+convoyeurs,Convoyeurs,convoyeur-kit-intercalaire-d,Kit support intercalaires (convoyeur double),Support pour intercalaires au-dessus du convoyeur.,,option
+convoyeurs,Convoyeurs,butee-simple,Butee pour convoyeur client - simple,"Etude mecanique + automatisme, fourniture du materiel avec pilotage, premontage atelier.",1500,piece
+convoyeurs,Convoyeurs,butee-complexe,Butee pour convoyeur client - complexe (sur etude),"Idem version simple, cas complexe necessitant une etude specifique.",3000,piece
+convoyeurs,Convoyeurs,convoyeur-arrivee-2m,"Convoyeur arrivee des produits (2 m, charge max 20 kg)","Etude mecanique + automatisme, fourniture du materiel avec pilotage, premontage atelier.",13500,piece
+convoyeurs,Convoyeurs,convoyeur-arrivee-robotiq,Convoyeur arrivee des produits pour cellule ROBOTIQ,Idem convoyeur standard + ajout de securite integre dans la cellule ROBOTIQ.,13500,piece
+convoyeurs,Convoyeurs,magasins-intercalaires,Magasins intercalaires,"Fourniture du materiel avec pilotage, premontage en atelier.",4000,piece
+pilotage,"Pilotage, automate & programmation",kit-pilotage-intuitif,Kit Pilotage intuitif,Surcouche logicielle + afficheur tactile + automate programmable pour un pilotage simplifie de la cellule.,7500,piece
+pilotage,"Pilotage, automate & programmation",kit-automate-programme,Kit Automate et programme,"Automate programmable, gestion de la mise en cycle, choix d'une recette de production, lancement en production.",2800,piece
+pilotage,"Pilotage, automate & programmation",kit-nocode-calepinage,Kit Programmation No-Code - plan de calepinage,"Logiciel de programmation simplifie, creation des trajectoires par simple choix de positions. A combiner avec le Kit Automate et programme.",4200,piece
+pilotage,"Pilotage, automate & programmation",kit-dev-calepinage,Developpement d'un plan de calepinage sur mesure,"Creation et test des trajectoires, deplacement et frais sur site client (prix moyen).",1500,prestation
+pilotage,"Pilotage, automate & programmation",armoire-electrique,Armoire electrique de raccordement,"Sectionneur general, alimentation 24VDC, protections, arret d'urgence, FRL air, relais de dialogue machine, cablage + schema electrique.",4400,piece
+pilotage,"Pilotage, automate & programmation",modem-telemaintenance,Modem de telemaintenance,"Fourniture, precablage et connexion (wifi ou cable) sur l'internet du client.",1300,piece
+securite,Securite,kit-securite-grille,Kit Securite grille & scanner,Grilles de securite sur les cotes des deux palettes + scanner de securite a l'avant de la cellule.,6500,piece
+securite,Securite,kit-securite-renforce,Kit securite renforce (grillage + radar),"Etude grillage de securite de chaque cote des deux palettes + 1 radar de securite, installation et mise en service incluses.",9700,piece
+securite,Securite,certification-securite,Certification securite,Etude des risques et fourniture de l'analyse des risques.,2200,prestation
+amr,Gestion de flux - robots mobiles AMR,kit-gestion-flux-amr,Kit gestion des flux d'AMR,"Logiciel de gestion des flux, ordinateur + armoire de controle, 2 coffrets pour la gestion de postes, ecran de supervision. Licence pour 1 a 10 robots.",9500,piece
+amr,Gestion de flux - robots mobiles AMR,amr-mise-en-service,Mise en service + demarrage sur 2 postes AMR,Installation de l'armoire principale et demarrage de l'application sur 2 postes (hors frais de deplacement).,5500,prestation
+amr,Gestion de flux - robots mobiles AMR,amr-poste-supplementaire,Poste supplementaire a gerer par les robots AMR,Kit permettant d'ajouter un poste supplementaire (hors frais de deplacement).,2000,piece
+montage,Montage & mise en service,montage-atelier,Montage de la cellule a l'atelier,"Montage sur chassis, raccordement, prehenseur teste, capteurs testes, mise sous tension et test des trajectoires.",2500,prestation
+montage,Montage & mise en service,montage-client,Montage de la cellule chez le client (1 semaine),"Montage et recablage chez le client, mise en service de l'application sur un plan de palettisation.",3200,prestation
+montage,Montage & mise en service,mise-en-service-200km,Mise en service - rayon ~200 km,"Montage, cablage, mise au point d'une recette, livraison, installation et mise en service chez le client.",8600,prestation
+montage,Montage & mise en service,mise-en-service-500km,Mise en service - rayon ~500 km,Idem prestation ci-dessus pour une distance d'environ 500 km.,10500,prestation
+robots-ur10,Ensembles robot UR10 / LIFKIT,ur10-lifkit,Ensemble Robot UR10 + LIFKIT (course 900 mm),"UR10 e-Serie, LIFKIT jusqu'a 900 mm de course, chaine porte-cable, collier et gaine. A monter par le client.",,piece
+robots-ur10,Ensembles robot UR10 / LIFKIT,ur10-lifkit-force,Ensemble Robot UR10 + LIFKIT avec capteur de force,"UR10 e-Serie avec capteur de force, LIFKIT jusqu'a 900 mm de course, chaine porte-cable, collier et gaine. A monter par le client.",,piece
