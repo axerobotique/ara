@@ -38,6 +38,20 @@ function formatPrix(montant) {
   return montant.toLocaleString("fr-FR", { maximumFractionDigits: 0 }) + " €";
 }
 
+// Essaie plusieurs extensions pour la photo d'un article (images/catalogue/<item_id>.<ext>).
+// Si aucune n'existe, masque simplement la photo (aucune erreur visible).
+const EXTENSIONS_PHOTO = ["jpg", "jpeg", "png", "webp"];
+function basculerPhotoSuivante(img) {
+  const extActuelle = img.dataset.ext;
+  const prochaine = EXTENSIONS_PHOTO[EXTENSIONS_PHOTO.indexOf(extActuelle) + 1];
+  if (!prochaine) {
+    img.style.display = "none";
+    return;
+  }
+  img.dataset.ext = prochaine;
+  img.src = img.src.replace(new RegExp("\\." + extActuelle + "$"), "." + prochaine);
+}
+
 function trouverItem(id) {
   for (const cat of CATALOGUE) {
     const found = cat.items.find((i) => i.id === id);
@@ -68,6 +82,8 @@ function rendreCatalogue() {
       const qty = cart[item.id] || 0;
       html += `
         <div class="item-row" data-item-id="${item.id}">
+          <img class="item-photo" src="images/catalogue/${item.id}.jpg" data-ext="jpg" alt=""
+               onerror="basculerPhotoSuivante(this)">
           <div>
             <div class="item-name">${item.name}</div>
             ${item.desc ? `<div class="item-desc">${item.desc}</div>` : ""}
