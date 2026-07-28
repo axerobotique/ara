@@ -23,7 +23,7 @@
    automatiquement sur le catalogue de secours (js/catalogue-data.js).
    ============================================================================ */
 
-const SHEET_ID = ""; // <-- coller l'ID du Google Sheet ici
+const SHEET_ID = "1m1CTv4amzo0Lcg3wVtUdlSwWkZtPD16mmPwkPuhUAHM";
 const SHEET_NAME = ""; // optionnel : nom de l'onglet si ce n'est pas le premier
 
 const COLONNES_ATTENDUES = ["categorie_id", "categorie_titre", "item_id", "item_nom", "item_desc", "prix", "unite"];
