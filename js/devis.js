@@ -64,6 +64,10 @@ function trouverItem(id) {
 /* Rendu du catalogue                                                      */
 /* ---------------------------------------------------------------------- */
 
+// Categories/articles effectivement affiches (actif !== false), recalcules a chaque rendu.
+// Conserve pour que rendreCategorieBadges() reste aligne avec les .category du DOM.
+let CATALOGUE_VISIBLE = [];
+
 function rendreCatalogue() {
   const container = document.getElementById("catalogue-container");
   if (!container) return;
@@ -73,8 +77,12 @@ function rendreCatalogue() {
     return;
   }
 
+  CATALOGUE_VISIBLE = CATALOGUE
+    .map((cat) => ({ ...cat, items: cat.items.filter((i) => i.active !== false) }))
+    .filter((cat) => cat.items.length > 0);
+
   let html = "";
-  CATALOGUE.forEach((cat, idx) => {
+  CATALOGUE_VISIBLE.forEach((cat, idx) => {
     const nbSelectionnes = cat.items.filter((i) => (cart[i.id] || 0) > 0).length;
     html += `<details class="category" ${idx === 0 ? "open" : ""}>`;
     html += `<summary>${cat.title}${nbSelectionnes > 0 ? `<span class="category-count">${nbSelectionnes}</span>` : ""}</summary>`;
@@ -107,7 +115,7 @@ function rendreCatalogue() {
 
 function rendreCategorieBadges() {
   document.querySelectorAll(".category").forEach((catEl, idx) => {
-    const cat = CATALOGUE[idx];
+    const cat = CATALOGUE_VISIBLE[idx];
     if (!cat) return;
     const nbSelectionnes = cat.items.filter((i) => (cart[i.id] || 0) > 0).length;
     const badge = catEl.querySelector(".category-count");

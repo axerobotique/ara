@@ -5,12 +5,16 @@
 
    1. Creez un Google Sheet avec ces colonnes en ligne 1 (voir le fichier
       catalogue-sheet-import.csv fourni, a importer directement) :
-        categorie_id | categorie_titre | item_id | item_nom | item_desc | prix | unite
+        categorie_id | categorie_titre | item_id | item_nom | item_desc | prix | unite | actif
 
    2. Une ligne = un article. Repetez categorie_id/categorie_titre pour
       chaque article d'une meme categorie (l'ordre des categories suit leur
       premiere apparition dans la feuille). Laissez "prix" vide pour
       afficher "Sur devis".
+
+      La colonne "actif" est facultative : mettez "non" (ou "0"/"false")
+      pour masquer une ligne sur le site sans la supprimer du Sheet. Vide
+      ou "oui" = ligne affichee.
 
    3. Partagez le Sheet en lecture : bouton "Partager" > "General access" >
       "Anyone with the link" > role "Viewer".
@@ -27,6 +31,9 @@ const SHEET_ID = "1m1CTv4amzo0Lcg3wVtUdlSwWkZtPD16mmPwkPuhUAHM";
 const SHEET_NAME = ""; // optionnel : nom de l'onglet si ce n'est pas le premier
 
 const COLONNES_ATTENDUES = ["categorie_id", "categorie_titre", "item_id", "item_nom", "item_desc", "prix", "unite"];
+// Colonne facultative : si absente du Sheet, tous les articles sont consideres actifs.
+const COLONNE_ACTIF = "actif";
+const VALEURS_INACTIF = ["non", "no", "false", "0", "n"];
 
 function parseCSV(text) {
   const rows = [];
@@ -69,6 +76,7 @@ function csvVersCatalogue(text) {
   if (Object.values(idx).some((i) => i === -1)) {
     throw new Error("Colonnes manquantes dans le Sheet (attendu : " + COLONNES_ATTENDUES.join(", ") + ")");
   }
+  const idxActif = header.indexOf(COLONNE_ACTIF); // -1 si colonne absente : tout est actif
 
   const categories = [];
   const parCategorie = {};
@@ -87,12 +95,16 @@ function csvVersCatalogue(text) {
     const prixBrut = (r[idx.prix] || "").trim();
     const prix = prixBrut === "" ? null : Number(prixBrut.replace(",", "."));
 
+    const actifBrut = idxActif === -1 ? "" : (r[idxActif] || "").trim().toLowerCase();
+    const active = !VALEURS_INACTIF.includes(actifBrut);
+
     parCategorie[catId].items.push({
       id: itemId,
       name: (r[idx.item_nom] || "").trim(),
       desc: (r[idx.item_desc] || "").trim(),
       price: prix === null || isNaN(prix) ? null : prix,
       unit: (r[idx.unite] || "").trim(),
+      active: active,
     });
   });
 

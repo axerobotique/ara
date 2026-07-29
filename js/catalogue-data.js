@@ -14,6 +14,8 @@
  *   - desc     : courte description (optionnelle, peut etre vide "")
  *   - price    : prix HT en euros (nombre). Mettre null si "Sur devis".
  *   - unit     : unite affichee (ex: "cellule", "piece", "prestation")
+ *   - active   : optionnel. Mettre "false" pour masquer l'article sur le
+ *                site (absent ou "true" = affiche).
  * ============================================================================
  */
 
