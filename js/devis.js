@@ -82,9 +82,9 @@ function rendreCatalogue() {
     .filter((cat) => cat.items.length > 0);
 
   let html = "";
-  CATALOGUE_VISIBLE.forEach((cat, idx) => {
+  CATALOGUE_VISIBLE.forEach((cat) => {
     const nbSelectionnes = cat.items.filter((i) => (cart[i.id] || 0) > 0).length;
-    html += `<details class="category" ${idx === 0 ? "open" : ""}>`;
+    html += `<details class="category">`;
     html += `<summary>${cat.title}${nbSelectionnes > 0 ? `<span class="category-count">${nbSelectionnes}</span>` : ""}</summary>`;
     cat.items.forEach((item) => {
       const qty = cart[item.id] || 0;
