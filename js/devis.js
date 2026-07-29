@@ -52,6 +52,16 @@ function basculerPhotoSuivante(img) {
   img.src = img.src.replace(new RegExp("\\." + extActuelle + "$"), "." + prochaine);
 }
 
+// Echappe le HTML puis transforme les retours a la ligne du Sheet (\n, \r\n) en <br>,
+// pour que la description d'un article s'affiche avec les memes paragraphes que dans la cellule.
+function texteAvecRetoursLigne(texte) {
+  return String(texte)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\r\n|\r|\n/g, "<br>");
+}
+
 function trouverItem(id) {
   for (const cat of CATALOGUE) {
     const found = cat.items.find((i) => i.id === id);
@@ -67,6 +77,37 @@ function trouverItem(id) {
 // Categories/articles effectivement affiches (actif !== false), recalcules a chaque rendu.
 // Conserve pour que rendreCategorieBadges() reste aligne avec les .category du DOM.
 let CATALOGUE_VISIBLE = [];
+
+// Symbole visuel par categorie (identifie par cat.id), independant de la source du
+// catalogue (Sheet ou fallback) : evite d'avoir a ajouter une colonne dans le Sheet.
+const ICON_CONVOYEUR = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="6" width="4.5" height="5.5"/>
+  <rect x="9.7" y="4.3" width="4.5" height="7.2"/>
+  <rect x="15.4" y="6" width="4.5" height="5.5"/>
+  <rect x="2" y="12.5" width="20" height="3" rx="1.2"/>
+  <circle cx="4" cy="18.3" r="1.6"/>
+  <circle cx="8.3" cy="18.3" r="1.6"/>
+  <circle cx="12.6" cy="18.3" r="1.6"/>
+  <circle cx="16.9" cy="18.3" r="1.6"/>
+  <circle cx="21.2" cy="18.3" r="1.6"/>
+</svg>`;
+
+const CATEGORY_ICONS = {
+  "cellules": "📦",
+  "prehenseurs": "🦾",
+  "chassis": "🏗️",
+  "convoyeurs": ICON_CONVOYEUR,
+  "pilotage": "⚙️",
+  "securite": "🛡️",
+  "amr": "🤖",
+  "montage": "🔧",
+  "robots-ur10": "🤖",
+  "bloc-base": "🧱",
+  "bloc-modules": "🧩",
+  "kits-bloc-base": "🧰",
+  "kits-prehenseur-bloc": "✋",
+  "kits-securite-bloc": "🔒"
+};
 
 function rendreCatalogue() {
   const container = document.getElementById("catalogue-container");
@@ -84,8 +125,9 @@ function rendreCatalogue() {
   let html = "";
   CATALOGUE_VISIBLE.forEach((cat) => {
     const nbSelectionnes = cat.items.filter((i) => (cart[i.id] || 0) > 0).length;
+    const icon = CATEGORY_ICONS[cat.id] || "🔹";
     html += `<details class="category">`;
-    html += `<summary>${cat.title}${nbSelectionnes > 0 ? `<span class="category-count">${nbSelectionnes}</span>` : ""}</summary>`;
+    html += `<summary><span class="category-label"><span class="category-icon" aria-hidden="true">${icon}</span>${cat.title}</span>${nbSelectionnes > 0 ? `<span class="category-count">${nbSelectionnes}</span>` : ""}</summary>`;
     cat.items.forEach((item) => {
       const qty = cart[item.id] || 0;
       html += `
@@ -94,7 +136,7 @@ function rendreCatalogue() {
                onerror="basculerPhotoSuivante(this)">
           <div>
             <div class="item-name">${item.name}</div>
-            ${item.desc ? `<div class="item-desc">${item.desc}</div>` : ""}
+            ${item.desc ? `<div class="item-desc">${texteAvecRetoursLigne(item.desc)}</div>` : ""}
           </div>
           <div class="item-price">${formatPrix(item.price)}<small>${item.unit}</small></div>
           <div class="qty-control">

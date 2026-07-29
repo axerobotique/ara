@@ -373,6 +373,21 @@ footer.site-footer {
   background: var(--gris-clair);
 }
 .category > summary::-webkit-details-marker { display: none; }
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.category-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+.category-icon svg {
+  display: block;
+  color: var(--orange-fonce);
+}
 .category > summary::after {
   content: "+";
   font-size: 20px;
