@@ -152,6 +152,75 @@ function rendreCatalogue() {
 }
 
 /* ---------------------------------------------------------------------- */
+/* Recherche dans le catalogue                                             */
+/* ---------------------------------------------------------------------- */
+
+// Enleve les accents et met en minuscules, pour une recherche insensible aux deux.
+function normaliserTexte(texte) {
+  return String(texte || "")
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase();
+}
+
+// Vrai si un des "mots" du texte commence par le terme recherche.
+function texteCommenceParTerme(texte, terme) {
+  if (!terme) return true;
+  return normaliserTexte(texte)
+    .split(/[^a-z0-9]+/)
+    .some((mot) => mot.startsWith(terme));
+}
+
+// Filtre le catalogue affiche selon le terme tape : masque les articles/categories
+// qui ne correspondent pas et ouvre automatiquement les categories (<details>) qui
+// contiennent au moins un article correspondant.
+function filtrerCatalogue(termeBrut) {
+  const container = document.getElementById("catalogue-container");
+  const emptyEl = document.getElementById("catalogue-search-empty");
+  if (!container) return;
+
+  const terme = normaliserTexte((termeBrut || "").trim());
+  let nbResultats = 0;
+
+  container.querySelectorAll(".category").forEach((catEl, idx) => {
+    const cat = CATALOGUE_VISIBLE[idx];
+    if (!cat) return;
+
+    let nbResultatsCategorie = 0;
+    catEl.querySelectorAll(".item-row").forEach((rowEl) => {
+      const item = cat.items.find((i) => i.id === rowEl.dataset.itemId);
+      const correspond =
+        !item ||
+        texteCommenceParTerme(item.name, terme) ||
+        texteCommenceParTerme(item.desc, terme) ||
+        texteCommenceParTerme(cat.title, terme);
+      rowEl.style.display = correspond ? "" : "none";
+      if (correspond) nbResultatsCategorie++;
+    });
+
+    if (!terme) {
+      catEl.style.display = "";
+    } else if (nbResultatsCategorie > 0) {
+      catEl.style.display = "";
+      catEl.open = true;
+      nbResultats += nbResultatsCategorie;
+    } else {
+      catEl.style.display = "none";
+    }
+  });
+
+  if (emptyEl) emptyEl.style.display = terme && nbResultats === 0 ? "block" : "none";
+}
+
+function initRechercheCatalogue() {
+  const input = document.getElementById("catalogue-search");
+  if (!input) return;
+  input.addEventListener("input", function () {
+    filtrerCatalogue(input.value);
+  });
+}
+
+/* ---------------------------------------------------------------------- */
 /* Rendu du panier                                                          */
 /* ---------------------------------------------------------------------- */
 
@@ -376,6 +445,7 @@ function initFormulaire() {
 document.addEventListener("DOMContentLoaded", function () {
   chargerPanier();
   initEcouteursCatalogue();
+  initRechercheCatalogue();
   initFormulaire();
 
   const catalogueContainer = document.getElementById("catalogue-container");

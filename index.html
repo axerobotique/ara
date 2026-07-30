@@ -35,9 +35,17 @@
   <div class="container">
     <div class="devis-layout">
 
-      <div id="catalogue-container">
-        <!-- Le catalogue est genere automatiquement par js/devis.js a partir de js/catalogue-data.js -->
-        <p style="color:#999">Chargement du catalogue…</p>
+      <div class="catalogue-col">
+        <div class="catalogue-search">
+          <input type="search" id="catalogue-search" placeholder="Rechercher un kit ou un article…" aria-label="Rechercher dans le catalogue">
+        </div>
+
+        <div id="catalogue-container">
+          <!-- Le catalogue est genere automatiquement par js/devis.js a partir de js/catalogue-data.js -->
+          <p style="color:#999">Chargement du catalogue…</p>
+        </div>
+
+        <p id="catalogue-search-empty" class="catalogue-search-empty" style="display:none;">Aucun résultat pour cette recherche.</p>
       </div>
 
       <aside class="cart">
