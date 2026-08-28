@@ -5,12 +5,18 @@
 
    1. Creez un Google Sheet avec ces colonnes en ligne 1 (voir le fichier
       catalogue-sheet-import.csv fourni, a importer directement) :
-        categorie_id | categorie_titre | item_id | item_nom | item_desc | prix | unite | actif
+        categorie_id | categorie_titre | sous_categorie | item_id | item_nom | item_desc | prix | unite | actif
 
    2. Une ligne = un article. Repetez categorie_id/categorie_titre pour
       chaque article d'une meme categorie (l'ordre des categories suit leur
       premiere apparition dans la feuille). Laissez "prix" vide pour
       afficher "Sur devis".
+
+      La colonne "sous_categorie" est facultative : remplissez-la pour
+      regrouper certains articles d'une categorie sous un sous-menu
+      depliable (ex: "Voie simple" / "Voie double" dans "Convoyeurs").
+      Laissez-la vide pour les articles affiches directement sous la
+      categorie, sans sous-groupe.
 
       La colonne "actif" est facultative : mettez "non" (ou "0"/"false")
       pour masquer une ligne sur le site sans la supprimer du Sheet. Vide
@@ -34,6 +40,8 @@ const COLONNES_ATTENDUES = ["categorie_id", "categorie_titre", "item_id", "item_
 // Colonne facultative : si absente du Sheet, tous les articles sont consideres actifs.
 const COLONNE_ACTIF = "actif";
 const VALEURS_INACTIF = ["non", "no", "false", "0", "n"];
+// Colonne facultative : si absente du Sheet, aucun article n'a de sous-categorie.
+const COLONNE_SOUS_CATEGORIE = "sous_categorie";
 
 function parseCSV(text) {
   const rows = [];
@@ -77,6 +85,7 @@ function csvVersCatalogue(text) {
     throw new Error("Colonnes manquantes dans le Sheet (attendu : " + COLONNES_ATTENDUES.join(", ") + ")");
   }
   const idxActif = header.indexOf(COLONNE_ACTIF); // -1 si colonne absente : tout est actif
+  const idxSousCategorie = header.indexOf(COLONNE_SOUS_CATEGORIE); // -1 si colonne absente : pas de sous-categorie
 
   const categories = [];
   const parCategorie = {};
@@ -98,6 +107,8 @@ function csvVersCatalogue(text) {
     const actifBrut = idxActif === -1 ? "" : (r[idxActif] || "").trim().toLowerCase();
     const active = !VALEURS_INACTIF.includes(actifBrut);
 
+    const sousCategorie = idxSousCategorie === -1 ? "" : (r[idxSousCategorie] || "").trim();
+
     parCategorie[catId].items.push({
       id: itemId,
       name: (r[idx.item_nom] || "").trim(),
@@ -105,6 +116,7 @@ function csvVersCatalogue(text) {
       price: prix === null || isNaN(prix) ? null : prix,
       unit: (r[idx.unite] || "").trim(),
       active: active,
+      subcategory: sousCategorie,
     });
   });
 

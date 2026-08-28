@@ -16,6 +16,9 @@
  *   - unit     : unite affichee (ex: "cellule", "piece", "prestation")
  *   - active   : optionnel. Mettre "false" pour masquer l'article sur le
  *                site (absent ou "true" = affiche).
+ *   - subcategory : optionnel. Regroupe l'article sous un sous-menu depliable
+ *                   au sein de sa categorie (ex: "Voie simple"). Absent ou ""
+ *                   = article affiche directement sous la categorie.
  * ============================================================================
  */
 

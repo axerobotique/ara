@@ -421,6 +421,31 @@ footer.site-footer {
   margin-left: 10px;
 }
 
+.subcategory {
+  border-top: 1px solid var(--gris-bordure);
+}
+.subcategory > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 22px 12px 40px;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+}
+.subcategory > summary::-webkit-details-marker { display: none; }
+.subcategory > summary::after {
+  content: "+";
+  font-size: 17px;
+  color: var(--orange-fonce);
+  font-weight: 400;
+}
+.subcategory[open] > summary::after { content: "\2212"; }
+.subcategory .item-row { padding-left: 40px; }
+
 .item-row {
   display: grid;
   grid-template-columns: auto 1fr auto auto;

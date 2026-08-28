@@ -109,6 +109,43 @@ const CATEGORY_ICONS = {
   "kits-securite-bloc": "🔒"
 };
 
+function rendreLigneArticle(item) {
+  const qty = cart[item.id] || 0;
+  return `
+    <div class="item-row" data-item-id="${item.id}">
+      <img class="item-photo" src="images/catalogue/${item.id}.jpg" data-ext="jpg" alt=""
+           onerror="basculerPhotoSuivante(this)">
+      <div>
+        <div class="item-name">${item.name}</div>
+        ${item.desc ? `<div class="item-desc">${texteAvecRetoursLigne(item.desc)}</div>` : ""}
+      </div>
+      <div class="item-price">${formatPrix(item.price)}<small>${item.unit}</small></div>
+      <div class="qty-control">
+        <button type="button" class="qty-minus" aria-label="Diminuer la quantite">&minus;</button>
+        <input type="number" min="0" step="1" class="qty-input" value="${qty}" aria-label="Quantite pour ${item.name}">
+        <button type="button" class="qty-plus" aria-label="Augmenter la quantite">&plus;</button>
+      </div>
+    </div>`;
+}
+
+// Regroupe les articles d'une categorie par sous-categorie (champ item.subcategory),
+// en conservant l'ordre d'apparition. Un groupe sans titre (subcategory vide) est
+// affiche directement sous la categorie, sans sous-menu depliable.
+function regrouperParSousCategorie(items) {
+  const groupes = [];
+  const parTitre = {};
+  items.forEach((item) => {
+    const titre = (item.subcategory || "").trim();
+    if (!parTitre[titre]) {
+      const groupe = { titre, items: [] };
+      parTitre[titre] = groupe;
+      groupes.push(groupe);
+    }
+    parTitre[titre].items.push(item);
+  });
+  return groupes;
+}
+
 function rendreCatalogue() {
   const container = document.getElementById("catalogue-container");
   if (!container) return;
@@ -128,23 +165,15 @@ function rendreCatalogue() {
     const icon = CATEGORY_ICONS[cat.id] || "🔹";
     html += `<details class="category">`;
     html += `<summary><span class="category-label"><span class="category-icon" aria-hidden="true">${icon}</span>${cat.title}</span>${nbSelectionnes > 0 ? `<span class="category-count">${nbSelectionnes}</span>` : ""}</summary>`;
-    cat.items.forEach((item) => {
-      const qty = cart[item.id] || 0;
-      html += `
-        <div class="item-row" data-item-id="${item.id}">
-          <img class="item-photo" src="images/catalogue/${item.id}.jpg" data-ext="jpg" alt=""
-               onerror="basculerPhotoSuivante(this)">
-          <div>
-            <div class="item-name">${item.name}</div>
-            ${item.desc ? `<div class="item-desc">${texteAvecRetoursLigne(item.desc)}</div>` : ""}
-          </div>
-          <div class="item-price">${formatPrix(item.price)}<small>${item.unit}</small></div>
-          <div class="qty-control">
-            <button type="button" class="qty-minus" aria-label="Diminuer la quantite">&minus;</button>
-            <input type="number" min="0" step="1" class="qty-input" value="${qty}" aria-label="Quantite pour ${item.name}">
-            <button type="button" class="qty-plus" aria-label="Augmenter la quantite">&plus;</button>
-          </div>
-        </div>`;
+    regrouperParSousCategorie(cat.items).forEach((groupe) => {
+      if (!groupe.titre) {
+        groupe.items.forEach((item) => { html += rendreLigneArticle(item); });
+        return;
+      }
+      html += `<details class="subcategory">`;
+      html += `<summary><span class="subcategory-label">${groupe.titre}</span></summary>`;
+      groupe.items.forEach((item) => { html += rendreLigneArticle(item); });
+      html += `</details>`;
     });
     html += `</details>`;
   });
@@ -196,6 +225,20 @@ function filtrerCatalogue(termeBrut) {
         texteCommenceParTerme(cat.title, terme);
       rowEl.style.display = correspond ? "" : "none";
       if (correspond) nbResultatsCategorie++;
+    });
+
+    catEl.querySelectorAll(".subcategory").forEach((subEl) => {
+      const aUnResultatVisible = Array.from(subEl.querySelectorAll(".item-row")).some(
+        (rowEl) => rowEl.style.display !== "none"
+      );
+      if (!terme) {
+        subEl.style.display = "";
+      } else if (aUnResultatVisible) {
+        subEl.style.display = "";
+        subEl.open = true;
+      } else {
+        subEl.style.display = "none";
+      }
     });
 
     if (!terme) {
