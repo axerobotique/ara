@@ -8,6 +8,7 @@
   --orange: #e8720c;
   --orange-fonce: #c25e08;
   --gris-clair: #f4f4f2;
+  --gris-fonce: #dcdcd6;
   --gris-bordure: #e0e0dc;
   --texte: #262626;
   --blanc: #ffffff;
@@ -386,7 +387,7 @@ footer.site-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--gris-clair);
+  background: var(--gris-fonce);
 }
 .category > summary::-webkit-details-marker { display: none; }
 .category-label {
@@ -434,7 +435,7 @@ footer.site-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fafafa;
+  background: var(--gris-clair);
 }
 .subcategory > summary::-webkit-details-marker { display: none; }
 .subcategory > summary::after {
