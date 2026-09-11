@@ -341,7 +341,6 @@ function definirQuantite(itemId, qty) {
 
 function reinitialiserQuantites() {
   if (Object.keys(cart).length === 0) return;
-  if (!window.confirm("Remettre toutes les quantites a zero ?")) return;
 
   cart = {};
   sauvegarderPanier();
