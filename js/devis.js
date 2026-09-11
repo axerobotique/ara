@@ -339,6 +339,25 @@ function definirQuantite(itemId, qty) {
   rendrePanier();
 }
 
+function reinitialiserQuantites() {
+  if (Object.keys(cart).length === 0) return;
+  if (!window.confirm("Remettre toutes les quantites a zero ?")) return;
+
+  cart = {};
+  sauvegarderPanier();
+  rendrePanier();
+
+  document.querySelectorAll("#catalogue-container .qty-input").forEach((input) => {
+    input.value = 0;
+  });
+}
+
+function initBoutonResetPanier() {
+  const btn = document.getElementById("cart-reset-btn");
+  if (!btn) return;
+  btn.addEventListener("click", reinitialiserQuantites);
+}
+
 function initEcouteursCatalogue() {
   const container = document.getElementById("catalogue-container");
   if (!container) return;
@@ -490,6 +509,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initEcouteursCatalogue();
   initRechercheCatalogue();
   initFormulaire();
+  initBoutonResetPanier();
 
   const catalogueContainer = document.getElementById("catalogue-container");
   if (catalogueContainer) {
