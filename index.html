@@ -7,6 +7,15 @@
 <meta name="description" content="Configurez votre cellule de palettisation : sélectionnez les éléments et quantités souhaités et recevez votre demande de devis.">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  try {
+    if (localStorage.getItem("axe_auth") !== "ok") {
+      document.documentElement.classList.add("axe-locked");
+    }
+  } catch (e) {
+    document.documentElement.classList.add("axe-locked");
+  }
+</script>
 </head>
 <body>
 
@@ -141,6 +150,7 @@
 <script src="js/catalogue-loader.js"></script>
 <script src="js/devis.js"></script>
 <script src="js/main.js"></script>
+<script src="js/auth.js"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
